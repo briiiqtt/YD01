@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\kbs35\Desktop\Changho_AJAX\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3589252348.index
+409803727.index
+2690976392.index
+506093845.index
+3594265862.index
+1662511500.index
+2609906771.index
+1304389506.index
