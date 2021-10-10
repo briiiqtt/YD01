@@ -1,0 +1,50 @@
+package co.yedam.comment;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/CommentServlet")
+public class CommentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public CommentServlet() {
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		response.setContentType("text/html; charset=UTF-8");
+
+		PrintWriter out = response.getWriter();
+		String cmd = request.getParameter("cmd");
+		CommentDAO dao = CommentDAO.getInstance();
+
+		if (cmd == null) {
+			System.out.println("<h1>빈 페이지입니다.</h1>");
+			dao.getCommentList();
+		} else if (cmd.equals("list")) {
+			System.out.println("<h1>리스트 페이지입니다.</h1>");
+		} else if (cmd.equals("add")) {
+			System.out.println("<h1>추가 페이지입니다.</h1>");
+		} else if (cmd.equals("mod")) {
+			System.out.println("<h1>수정 페이지입니다.</h1>");
+		} else if (cmd.equals("del")) {
+			System.out.println("<h1>삭제 페이지입니다.</h1>");
+		} else {
+			System.out.println("<h1>" + cmd + "</h1>");
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,16 @@
+package co.yedam.comment;
+
+import co.yedam.common.DAO;
+
+public class CommentDAO extends DAO {
+	
+	private CommentDAO singleton = new CommentDAO();
+
+	private CommentDAO() {
+
+	}
+
+	public CommentDAO getInstance() {
+		return singleton; 
+	}
+}

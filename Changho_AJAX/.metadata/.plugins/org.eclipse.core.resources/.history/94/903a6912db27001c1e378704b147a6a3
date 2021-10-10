@@ -1,0 +1,47 @@
+package co.yedam.comment;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import co.yedam.common.DAO;
+
+public class CommentDAO extends DAO {
+	
+	private static CommentDAO singleton = new CommentDAO();
+
+	private CommentDAO() {
+
+	}
+
+	public static CommentDAO getInstance() {
+		return singleton; 
+	}
+	
+	public void getCommentList() { // 글 목록
+		connect();
+		List<Comment> list = new ArrayList<>();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select * from comments order by 1");
+			while(rs.next()) {
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void insertComment() { // 글 입력
+		
+	}
+	
+	public void updateComment() { // 글 수정
+		
+	}
+	
+	public void deleteComment() { // 글 삭제
+		
+	}
+}

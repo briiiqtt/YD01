@@ -1,0 +1,8 @@
+package co.yedam.comment;
+
+public class Comment {
+	private String id;
+	private String name;
+	private String content;
+	
+}
