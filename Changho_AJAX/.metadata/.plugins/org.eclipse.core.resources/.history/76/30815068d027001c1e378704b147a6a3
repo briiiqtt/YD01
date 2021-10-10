@@ -1,7 +1,0 @@
-package co.yedam.comment;
-
-import co.yedam.common.DAO;
-
-public class CommentDAO extends DAO{
-	
-}
