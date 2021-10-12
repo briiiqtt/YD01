@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select</title>
+</head>
+
+<body>
+    <script>
+        // let obj = {
+        //     name: 'Hong',
+        //     age: 20,
+        //     showName: function () {
+        //         return this.name + ', '
+        //         this.age;
+        //     }
+        // };
+        // obj = new Object();
+        // obj.name = 'Hwang';
+        // obj.age = 23;
+
+        // obj['hobby'] = 'reading';
+
+        // let tureOrFalse = true;
+        // console.log(typeof tureOrFalse);
+        // tureOrFalse = new Boolean(true);
+        // console.log(typeof tureOrFalse);
+
+        // const person = {
+        //     name : "John",
+        //     lastName: "Doe",
+        //     language: "en",
+        //     age: new Object(13),
+        //     get lang() {
+        //         return this.language;
+        //     },
+        //     set name ( first) {
+        //         this.firstName = first;
+        //     }
+        // }
+        // person.name = 'Hong';
+        // console.log(person.firstName,person.lang);
+
+        // console.log(typeof person.firstName);
+        // console.log(typeof person.lang);
+        // console.log(typeof person.age);
+        // console.log(person.age);
+
+        const father = {
+            firstName: 'kildong',
+            lastName: 'Hong',
+            age: 20
+        };
+
+        const mother = {
+            firstName: 'hee',
+            lastName: 'Hwang',
+            age: 20
+        };
+        mother.gender = 'Female';
+
+        function Person(first, last, age, eye) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eye;
+            this.name = function () {
+                return this.firstName + ', ' + this.lastName;
+            }
+        };
+
+        Person.prototype.gender = 'Male'; // 프로토타입
+        const son = new Person('민수', '홍', 3, '검정'); // 생성자 함수
+
+        const daughter = new Person('민주', '홍', 3, '검정');
+        daughter.gender = 'Female';
+
+        console.log(father.age.gender);
+        console.log(son.age, son.gender, son.name());
+        console.log(daughter.age, daughter.gender, daughter.name());
+
+        class Persons {
+            constructor(firstName, lastName, age) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+            }
+            showName() {
+                return this.firstName + ', ' + this.lastName;
+            }
+        }
+        new Persons('순신', '이', 30);
+        console.log(lee.showName());
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array_map</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        const apple = {
+            name: 'apple',
+            price: 1000
+        }
+        const banana = {
+            name: 'banana',
+            price: 2000
+        }
+        const cherry = {
+            name: 'cherry',
+            price: 3000
+        }
+        const fruits = [apple, banana, cherry];
+
+
+
+
+
+        $(document).ready(function () {
+
+
+            // // map : true/false 상관없이 값을 반환.
+            let newFruits = $.map(fruits, function (obj, idx) {
+                // console.log(obj)
+                let newFruit = {}
+                newFruit.fruitName = obj.name;
+                newFruit.fruitPrice = obj.price;
+                newFruit.fruitOrder = idx;
+
+                return true;
+            });
+            console.log('1. fruits');
+            console.log(fruits);
+
+            let map1 = $.map(fruits, function (obj, idx) {
+                obj.price = obj.price + 111;
+                return obj;
+            });
+
+            console.log('2. map1');
+            console.log(map1);
+            console.log('3. fruits');
+            console.log(fruits);
+
+            // $.each(fruits, function (idx, obj) {
+            //     console.log(obj);
+            // });
+
+
+            // // grep : true 값만 반환
+            let grep1 = $.grep(fruits, function (obj, idx) {
+                return obj.price > 1111;
+            });
+            console.log('4. grep1');
+            console.log(grep1);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="show"> </div>
+
+
+    <div>
+        <p>내용1</p>
+        <p>내용2</p>
+        <p>내용3</p>
+        <p>내용4</p>
+        <p>내용5</p>
+        <p>내용6</p>
+        <p>내용7</p>
+    </div>
+
+    <script>
+        // console.log($('div>p').index($('p:contains(내용3)')));
+    </script>
+</body>
+
+</html>

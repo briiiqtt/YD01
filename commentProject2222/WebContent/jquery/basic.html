@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            let p_html = $('div > p').html();
+            console.log(p_html);
+        });
+
+        // let p = $('<p />'); // let p = document.createElement('p');
+
+        let p = $('<p class = "first" >hello, world</p>');
+        $(p).html('hello, 111world'); // p.innerHTML = 'hello, world';
+        $(p).css('background-color', 'yellow');
+        console.log(p);
+
+        $('body').append(p);
+    </script>
+</body>
+
+</html>

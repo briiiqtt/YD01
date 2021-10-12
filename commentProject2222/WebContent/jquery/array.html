@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="show"></div>
+
+    <script>
+        function Member(id, name, phone) {
+            this.id = id;
+            this.name = name;
+            this.phone = phone;
+        }
+
+        const members = [new Member('user1', '홍길동', '3322')];
+        members.push(new Member('user2', '김민주', '1234'))
+        members.push(new Member('user3', '김민구', '34111'))
+
+        let table = document.createElement('table');
+        table.setAttribute('border', '1');
+        let tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        // document.getElementById('show').appendChild(table);
+        $('#show').append(table);
+
+
+
+
+        //테이블 방법 (1)
+        members.forEach(function (obj, idx) {
+            let tr = document.createElement('tr');
+            for (let field in obj) {
+                let td = document.createElement('td');
+                td.innerHTML = obj[field];
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        });
+
+
+
+        // // jquery : 방법(1) - 요소를 만들고 그 '요소'에 이벤트 지정 
+        // // : 이하의 위치에 스크립트가 추가되면 추가된 요소에는 적용안됨
+
+        // $('tr').each(function (idx, obj) {
+        // $(obj).click(function () {
+        // window.alert($(this).children().eq(1).text());
+        // });
+        // 
+        // $(this).mouseover(function () { // $(this) => tr 태그
+        // $(this).css('background-color', 'yellow');
+        // })
+        // $(this).on('mouseout', function () {
+        // $(this).css('background-color', '');
+        // })
+        // });
+
+
+
+
+        // // jquery : 방법(2) - 라이브이벤트 등록 - 상위요소의 하위요소에 지정 
+        // // : 요소가 추가되어도 추가된 요소에도 적용됨
+
+        $(document).on('click', 'tr', function (event) {
+            window.alert($(event.target) /*.parent().children().eq(1)*/ .html());
+        })
+
+        $(document).on('mouseover', 'tr', function (e) {
+            $(e.target).parent().css('background-color', 'yellow');
+        })
+
+        $(document).on('mouseout', 'tr', function (e) {
+            $(e.target).parent().css('background-color', '');
+        })
+
+
+
+
+
+        // 테이블 방법(2)
+        // // $(members).each();
+        $.each(members, function (idx, obj) {
+            // // console.log(idx, obj);
+            let $tr = $('<tr/>').append($('<td/>').html(obj.id) //
+                , $('<td/>').html(obj.name) //
+                , $('<td/>').html(obj.phone) //
+            );
+            // // $(table).append($tr);
+            tbody.appendChild($tr.get(0)); // get() 은 jquery 를 javascript 타입으로 바꿔줌
+            // console.log($tr.get(0));
+        })
+    </script>
+</body>
+
+</html>

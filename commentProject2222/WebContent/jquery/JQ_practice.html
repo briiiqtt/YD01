@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="show"></div>
+    <script>
+        let table = $('<table/>');
+        table.attr({
+            'border': '1'
+        });
+        let thead = $('<thead/>')
+        let th = $('<th>한글</th><th>숫자</th><th>영어</th>')
+        let tbody = $('<tbody/>')
+        thead.append(th);
+        table.append(thead);
+        $('#show').append(table);
+
+
+        const users = [];
+
+        function User(A, B, C) {
+            this.A = A
+            this.B = B
+            this.C = C
+        }
+        users.push(new User('1', '123', 'asd'));
+        users.push(new User('2', '456', 'qwe'));
+        users.push(new User('3', '789', 'zxc'));
+        users.push(new User('4', '101', 'ert'));
+        users.push(new User('5', '111', 'fgh'));
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // forEach
+        
+        users.forEach(function (obj, idx) {
+            let tr = $('<tr/>');
+            for (idx in obj) {
+                let td = $('<td/>');
+                td.html(obj[idx]);
+                tr.append(td);
+            }
+            tbody.append(tr);
+        });
+        table.append(tbody);
+
+        // 이중 for문
+
+        // for (field of users) {
+        //     let tr = $('<tr/>');
+        //     for (idx in field) {
+        //         let td = $('<td/>');
+        //         td.html(field[idx]);
+        //         tr.append(td);
+        //     }
+        //     tbody.append(tr);
+        // }
+        // table.append(tbody);
+    </script>
+</body>
+
+</html>
