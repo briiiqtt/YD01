@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mod_dom</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <style>
+        #show {
+            border: 2px dotted red;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="show"></div>
+    <script>
+        // before
+        $('#show').before($('<p>Hello</p>'))
+        $('#show').after($('<p>World</p>'))
+        $('<p>insertBefore</p>').insertBefore($('#show'))
+
+        // append, prepend
+        $('#show').append($('<p>inner1</p>'))
+        $('#show').append($('<p>inner2</p>'))
+        $('#show').prepend($('<p>inner3</p>'))
+        $('<p>prependTo</p>').prependTo($('#show'))
+        $('<p>appendTo</p>').appendTo($('#show'))
+
+        let cloned = $('#show').clone();
+        console.log(cloned);
+
+        $('#show+p').after(cloned)
+        // $(cloned).empty();
+
+        $(cloned).find('p:contains(prependTo)').replaceWith('<div>replaceWith</div>')
+        $('<div>repalceAll</div>').replaceAll($(cloned).find('p:contains(inner2)'))
+
+        // $(cloned).find('p').wrap('<div/>') // 지정한 <p> 하나를 <div>로 감쌈
+        // $(cloned).find('p').wrapAll('<div/>') // 모든 <p>를 하나의 <div>로 감쌈
+
+        $(cloned).find('p').wrapInner('<div/>')
+    </script>
+</body>
+
+</html>

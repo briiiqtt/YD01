@@ -6,17 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>select_fnc</title>
-    <script src="../jquery-3.6.0.js"></script>
+    <script src="../jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            $('button').click(function () {
-                filterFnc();
+            $('button:eq(0)').click(function () {
+                findFnc();
+            })
+            $('button:eq(1)').click(function () {
+                remove();
             })
         })
 
+        function remove() {
+            $('table').find('input:checked').parentsUntil('tbody').remove();
+        }
+
         function findFnc() {
             $('tbody>tr').find('td:nth-child(1)').css('background-color', 'yellow');
-            $('tbody>tr').find('input:checked').parent().css('background-color', 'blue');
+            $('tbody>tr').find(':checked').parent().css('background-color', 'blue');
 
             let trVal = $('tbody>tr');
             // JS
@@ -51,7 +58,8 @@
 
 <body>
     <div id="show"></div>
-    <button>클릭</button>
+    <button id="click">클릭</button>
+    <button id="remove">삭제</button>
     <script>
         fetch('coffee.json')
             .then(x => x.json())
