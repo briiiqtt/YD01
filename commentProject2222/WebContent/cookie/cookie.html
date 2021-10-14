@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+</head>
+
+<body>
+	<button>Login</button>
+	<button>Logout</button>
+	<button>Check</button>
+
+	<script>
+		let storedUsers = [{
+			name: '홍길동',
+			id: 'hong',
+			pw: '1111'
+		}, {
+			name: '길길길',
+			id: 'qwe',
+			pw: '2222'
+		}, {
+			name: '동동동',
+			id: 'asd',
+			pw: '3333'
+		}]
+
+		function login(id, passwd) {
+			for (let i = 0; i < storedUsers.length; i++) {
+				if (id === storedUsers[i].id && passwd === storedUsers[i].pw) {
+					return storedUsers[i];
+					break;
+				}
+			}
+			return null;
+		}
+
+		function logout() {
+			document.cookie = 'username=; expires=; path=/';
+			document.cookie = 'userid=; expires=; path=/';
+		}
+
+		function setCookie(cname, cval) {
+			const times = 3;
+			const d = new Date();
+			d.setTime(d.getTime() + 1000 * 10 /** 60 * times*/ );
+			document.cookie = cname + '=' + cval + '; expires=' + d.toUTCString + '; path=/';
+			console.log(d);
+			// username=hongkildong; expires=2021 10 14 12:00:00; path=/
+			// userid=hong; expires=2021 10 14 12:00:00; path=/
+			// username=hongkil; userid=hong; userinfo=~~~
+		}
+
+		function getCookie(cname) {
+			let cookies = document.cookie.split('; ');
+			for (let i = 0; i < cookies.length; i++) {
+				if (cookies[i].indexOf(cname) === 0) {
+					let result = cookies[i].substring(cname.length + 1);
+					return result;
+				}
+			}
+			return null;
+		}
+
+		let btns = document.getElementsByTagName('button');
+
+		// login 버튼
+		btns[0].onclick = function () {
+			let info = login('hong', '1111');
+			if (info) {
+				alert('logged in');
+				console.log(info.name);
+				setCookie('username', info.name);
+				setCookie('userid', info.id);
+			} else {
+				alert('invalid');
+			}
+		}
+
+		// check 버튼
+		btns[2].onclick = function () {
+			let result = "username: " + getCookie('username') + ", userid: " + getCookie('userid') + ", expires in "+getCookie('expires');
+			console.log(result);
+		}
+
+		// logout 버튼
+		btns[1].onclick - function () {
+			logout();
+			let result = getCookie('username') + getCookie('userid');
+		}
+	</script>
+</body>
+
+</html>
