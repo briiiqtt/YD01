@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        img {
+            width: 90%;
+            border-radius: 15px;
+        }
+
+        .below {
+            margin-bottom: 30px;
+        }
+
+        .below>span:nth-of-type(1) {
+            position: relative;
+            left: -10%;
+        }
+
+        .below>span:nth-of-type(2) {
+            position: relative;
+            left: 10%;
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="showList">
+        <!-- <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href='grey.html'">
+                <img src="../img/gray/gray.jpg" alt="">
+                <div class="below"><span>$10</span><span>❤ 3</span></div>
+            </a></div>
+
+        <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href=''">
+                <img src="../img/hood/hood_main.jpg" alt="">
+                <div class="below"><span>$10</span><span>❤ 3</span></div>
+            </a></div>
+
+        <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href=''">
+                <img src="../img/horse/horse.jpg" alt="">
+            </a></div>
+
+        <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href=''">
+                <img src="../img/leather/leather.jpg" alt="">
+            </a></div>
+
+        <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href=''">
+                <img src="../img/loaf/loaf.jpg" alt="">
+            </a></div>
+
+        <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href=''">
+                <img src="../img/shoe/conv.jpg" alt="">
+            </a></div>
+
+        <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href=''">
+                <img src="../img/yasang/yasang.jpg" alt="">
+            </a></div> -->
+    </div>
+
+    <script>
+        let imgSources = ["../img/gray/gray.jpg", "../img/hood/hood_main.jpg", "../img/horse/horse.jpg",
+            "../img/leather/leather.jpg",
+            "../img/loaf/loaf.jpg", "../img/shoe/conv.jpg", "../img/yasang/yasang.jpg"
+        ]
+        let showList = document.getElementById('showList');
+
+        for (let i = 0; i < imgSources.length; i++) {
+            let div = document.createElement('div');
+            let a = document.createElement('a');
+            div.appendChild(a);
+            let img = document.createElement('img');
+            img.src = imgSources[i];
+            a.appendChild(img);
+            a.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
+            showList.appendChild(div);
+        }
+    </script>
+</body>
+
+</html>

@@ -28,7 +28,6 @@ public class DAO {
 		}
 	}
 
-	// 연결해제.
 	protected void disconnect() {
 		if (conn != null) {
 			try {
