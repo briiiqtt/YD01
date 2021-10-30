@@ -22,13 +22,17 @@ public class MemberLogin implements Command {
 		vo = memberDAO.memberSelect(vo);
 		request.setAttribute("member", vo);
 		if(vo!=null) {
-			request.setAttribute("message", vo.getName()+"님 환영합니다;");
+//			session.setAttribute("message", vo.getName()+"님 환영합니다;");
+//			request.setAttribute("id", "AAAAAAAA");
+//			request.setAttribute("author", vo.getAuthor());
+//			request.setAttribute("name", vo.getName());
+			
+			request.setAttribute("message", vo.getName()+"님 하윙 ( ´ ▽ ` )ﾉ");
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("author", vo.getAuthor());
 			session.setAttribute("name", vo.getName());
-			
 		}else {
-			request.setAttribute("message", "아이이 또는 비밀번호가 틀렸습니다");
+			request.setAttribute("message", "( ˃̣̣̥᷄⌓˂̣̣̥᷅ ) <br><br> 아이디 또는 비밀번호가 틀렸습니다");
 		}
 		return "member/memberLogin";
 	}

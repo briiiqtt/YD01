@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+    window.onload = function(){
+		let homeLi = document.getElementById('homeLi');
+		console.log(homeLi);
+		homeLi.setAttribute('class', 'active');
+		console.log('hi');
+	}
+</script>
 <body>
 	<jsp:include page="../home/header.jsp" />
 	<div align="center">

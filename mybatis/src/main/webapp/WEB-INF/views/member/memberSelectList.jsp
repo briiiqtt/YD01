@@ -7,13 +7,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+    window.onload = function(){
+    	let listLi = document.getElementById('listLi');
+    	listLi.setAttribute('class', 'active');
+	}
+</script>
 <body>
 <jsp:include page="../home/header.jsp"/>
-	<div align="center">
+	<div id="area1" align="center">
 		<div>
-			<h1>회원 목록 보기</h1>
+			<h1>회원 목록</h1>
 		</div>
-		<div>
+		<div id="innerArea0">
 			<table border="1">
 				<tr>
 					<th width="150">아이디</th>

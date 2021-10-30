@@ -9,7 +9,7 @@ import co.seung.mybatis.notice.service.NoticeMapper;
 import co.seung.mybatis.notice.service.NoticeService;
 import co.seung.mybatis.notice.service.NoticeVO;
 
-public class NoticeServiceImpl implements NoticeService{
+public class NoticeServiceImpl implements NoticeService ,NoticeMapper{
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private NoticeMapper map = sqlSession.getMapper(NoticeMapper.class);
 	@Override
@@ -35,6 +35,26 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int noticeUpdate(NoticeVO vo) {
 		return map.noticeUpdate(vo);
+	}
+
+	@Override
+	public int noticeHitUpdate(NoticeVO vo) {
+		return map.noticeHitUpdate(vo);
+	}
+
+	@Override
+	public int noticeDeleteSelected(NoticeVO vo) {
+		return map.noticeDeleteSelected(vo);
+	}
+
+	@Override
+	public List<NoticeVO> noticeSelectByTitle(NoticeVO vo) {
+		return map.noticeSelectByTitle(vo);
+	}
+
+	@Override
+	public List<NoticeVO> noticeSelectByNid(NoticeVO vo) {
+		return map.noticeSelectByNid(vo);
 	}
 
 }

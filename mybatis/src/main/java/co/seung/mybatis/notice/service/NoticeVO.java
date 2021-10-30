@@ -4,12 +4,21 @@ import java.sql.Date;
 
 public class NoticeVO {
 	private int nid;
+	private String[] array;
 	private String id;
 	private String name;
-	private Date writeDate;
+	private String writeDate;
+//	private Date writeDate;
 	private String title;
 	private String contents;
 	private int hit;
+	
+	public String[] getArray() {
+		return array;
+	}
+	public void setArray(String[] array) {
+		this.array = array;
+	}
 	public int getNid() {
 		return nid;
 	}
@@ -28,12 +37,24 @@ public class NoticeVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getWriteDate() {
+	
+	
+	public String getWriteDate() {
 		return writeDate;
 	}
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}
+	
+
+//	public Date getWriteDate() {
+//		return writeDate;
+//	}
+//	public void setWriteDate(Date writeDate) {
+//		this.writeDate = writeDate;
+//	}
+	
+	
 	public String getTitle() {
 		return title;
 	}

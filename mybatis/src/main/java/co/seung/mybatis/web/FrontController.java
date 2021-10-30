@@ -13,11 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.seung.mybatis.comm.Command;
 import co.seung.mybatis.command.HomeCommand;
+import co.seung.mybatis.command.MemberJoin;
+import co.seung.mybatis.command.MemberJoinForm;
 import co.seung.mybatis.command.MemberLogin;
 import co.seung.mybatis.command.MemberLoginForm;
+import co.seung.mybatis.command.MemberLogout;
+import co.seung.mybatis.command.MemberSelectList;
+import co.seung.mybatis.command.MemberSelfInfo;
+import co.seung.mybatis.command.NoticeDelete;
+import co.seung.mybatis.command.NoticeDeleteSelected;
+import co.seung.mybatis.command.NoticeEdit;
+import co.seung.mybatis.command.NoticeForm;
+import co.seung.mybatis.command.NoticeInsert;
 import co.seung.mybatis.command.NoticeList;
-import co.seung.mybatis.command.memberList;
-import co.seung.mybatis.command.memberSelect;
+import co.seung.mybatis.command.NoticeSearch;
+import co.seung.mybatis.command.NoticeSelect;
+import co.seung.mybatis.command.MemberList;
+import co.seung.mybatis.command.MemberSelect;
 
 
 @WebServlet("*.do")
@@ -31,22 +43,25 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new HomeCommand());
-		map.put("/memberList.do", new memberList());
-		map.put("/memberSelect.do", new memberSelect());
-		map.put("/noticeList.do", new NoticeList());
+		//
+		map.put("/memberList.do", new MemberList());
+		map.put("/memberSelect.do", new MemberSelect());
+		map.put("/memberSelectList.do", new MemberSelectList());	
 		map.put("/memberLoginForm.do", new MemberLoginForm());
 		map.put("/memberLogin.do", new MemberLogin());
+		map.put("/memberLogout.do", new MemberLogout());
+		map.put("/memberJoinForm.do", new MemberJoinForm());
+		map.put("/memberJoin.do", new MemberJoin());
+		map.put("/memberSelfInfo.do", new MemberSelfInfo());
 		//
-//		map.put("/noticeSelect.do", new NoticeSelect());
-//		map.put("/noticeForm.do", new NoticeForm());
-//		map.put("/noticeInsert.do",	new NoticeInsert());	
-//		map.put("/noticeDelete.do",	new NoticeDelete());
-//		map.put("/memberSelectList.do", new MemberSelectList());	
-//		map.put("/memberLogout.do", new MemberLogout());
-//		map.put("/memberJoinForm.do", new MemberJoinForm());
-//		map.put("/memberJoin.do", new MemberJoin());
-//		map.put("/memberSelfInfo.do", new MemberSelfInfo());
-//		map.put("/noticeEdit.do", new NoticeEdit());
+		map.put("/noticeList.do", new NoticeList());
+		map.put("/noticeSelect.do", new NoticeSelect());
+		map.put("/noticeForm.do", new NoticeForm());
+		map.put("/noticeInsert.do",	new NoticeInsert());	
+		map.put("/noticeDelete.do",	new NoticeDelete());
+		map.put("/noticeDeleteSelected.do",	new NoticeDeleteSelected());
+		map.put("/noticeEdit.do", new NoticeEdit());
+		map.put("/noticeSearch.do", new NoticeSearch());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,8 +76,13 @@ public class FrontController extends HttpServlet {
 		if(!viewPage.endsWith(".do")) {
 			viewPage = "WEB-INF/views/" + viewPage + ".jsp";
 		}
+		if(viewPage != "noticeList.do") {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+		}
+		if(viewPage == "noticeList.do") {
+			response.sendRedirect(viewPage);
+		}
 	}
 
 }
